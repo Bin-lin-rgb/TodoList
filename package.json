@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "less-loader": "^11.0.0",
     "vue": "^2.6.14"
   },
   "devDependencies": {
@@ -33,8 +34,13 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
+    "parserOptions": {
+      "parser": "@babel/eslint-parser",
+      "requireConfigFile" : false
+    },
     "rules": {}
   },
+
   "browserslist": [
     "> 1%",
     "last 2 versions",
