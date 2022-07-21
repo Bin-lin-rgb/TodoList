@@ -34,12 +34,18 @@ export default {
   },
   data() {
     return {
-      todos: [
-        { id: "001", title: "抽烟", done: true },
-        { id: "002", title: "喝酒", done: false },
-        { id: "003", title: "开车", done: true },
-      ],
+      // 拿到浏览器缓存并解析，如果为空，则使用空数组而不是 null ，避免 Footer 读取 .length 报错
+      todos:JSON.parse(localStorage.getItem('todos')) || []
     };
+  },
+  watch:{
+    todos:{
+      // 开启深度监视
+      deep:true,
+      handler(value){
+        return localStorage.setItem('todos',JSON.stringify(value))
+      }
+    }
   },
   methods: {
     AddTodo(todo) {
