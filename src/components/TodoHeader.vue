@@ -20,7 +20,6 @@ export default {
       title: "",
     };
   },
-  props: ["AddTodo"],
   methods: {
     Add() {
       //校验数据
@@ -31,7 +30,7 @@ export default {
         title: this.title,
         done: false,
       };
-      this.AddTodo(newAddTodo);
+      this.$emit('AddTodo',newAddTodo);
       // 添加完之后将输入框归零
       this.title = "";
     },
