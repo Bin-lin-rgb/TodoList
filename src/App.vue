@@ -80,6 +80,10 @@ export default {
   mounted(){
     this.$bus.$on('CheckedTodo',this.CheckedTodo)
     this.$bus.$on('DeleteTodo',this.DeleteTodo)
+  },
+  beforeDestroy(){
+    this.$bus.$off('CheckedTodo')
+    this.$bus.$off('DeleteTodo')
   }
 };
 </script>
