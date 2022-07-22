@@ -5,8 +5,6 @@
         <TodoHeader @AddTodo="AddTodo" />
         <TodoList
           :todos="todos"
-          :CheckedTodo="CheckedTodo"
-          :DeleteTodo="DeleteTodo"
         />
         <TodoFooter
           :todos="todos"
@@ -79,6 +77,10 @@ export default {
       });
     },
   },
+  mounted(){
+    this.$bus.$on('CheckedTodo',this.CheckedTodo)
+    this.$bus.$on('DeleteTodo',this.DeleteTodo)
+  }
 };
 </script>
 

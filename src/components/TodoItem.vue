@@ -16,14 +16,19 @@
 export default {
   name: "TodoItem",
 
-  props: ["todo", "CheckedTodo", "DeleteTodo"],
+  props: ["todo"],
 
   methods: {
     HandleChecked(id) {
-      this.CheckedTodo(id);
+      // this.CheckedTodo(id);
+      this.$bus.$emit('CheckedTodo',id)
     },
     HandleDelete(id) {
-      this.DeleteTodo(id);
+      // this.DeleteTodo(id);
+      if(confirm('确定删除吗？')){
+        this.$bus.$emit('DeleteTodo',id)
+      }
+      
     },
   },
 };
