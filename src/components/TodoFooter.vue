@@ -4,7 +4,7 @@
       <input type="checkbox" v-model="ChangeAll" />
     </label>
     <span>
-      <span>已完成{{ TotalDone }}</span> /全部{{ sum }}
+      <span>已完成{{ TotalDone }}</span> / 全部{{ sum }}
     </span>
     <button class="btn btn-danger" @click="HandleDeleteAll">
       清除已完成任务
@@ -26,10 +26,11 @@ export default {
         return pre + (todo.done ? 1 : 0);
       }, 0);
     },
+
     ChangeAll: {
       //全选框是否勾选
       get() {
-        return this.doneTotal === this.total && this.total > 0;
+        return this.TotalDone === this.sum && this.sum > 0;
       },
       //isAll被修改时set被调用
       set(value) {
