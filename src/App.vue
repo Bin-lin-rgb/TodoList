@@ -76,14 +76,25 @@ export default {
         return !todo.done;
       });
     },
+
+    // 编辑
+    editTodo(id,title){
+      this.todos.forEach((todo)=>{
+        if (todo.id === id) {
+          todo.title = title
+        }
+      })
+    }
   },
   mounted(){
     this.$bus.$on('CheckedTodo',this.CheckedTodo)
     this.$bus.$on('DeleteTodo',this.DeleteTodo)
+    this.$bus.$on('editTodo',this.editTodo)
   },
   beforeDestroy(){
     this.$bus.$off('CheckedTodo')
     this.$bus.$off('DeleteTodo')
+    this.$bus.$off('editTodo')
   }
 };
 </script>
@@ -112,6 +123,13 @@ body {
   color: #fff;
   background-color: #da4f49;
   border: 1px solid #bd362f;
+}
+
+.btn-normal{
+  color: #fff;
+  background-color: skyblue;
+  border: 1px solid rgb(82, 140, 163);
+  margin-right: 6px;
 }
 
 .btn-danger:hover {
