@@ -1,35 +1,46 @@
 <template>
-  <li>
-    <label>
-      <input
-        type="checkbox"
-        :checked="todo.done"
-        @change="HandleChecked(todo.id)"
-      />
-      <span v-show="!todo.isEdit">{{ todo.title }}</span>
-      <input
-        type="text"
-        v-show="todo.isEdit"
-        :value="todo.title"
-        @blur="handleBlur(todo, $event)"
-        @keyup.enter="handleBlur(todo, $event)"
-        ref="inputTitle"
-      />
-      <!-- 当一个元素失去焦点的时候 blur 事件被触发。 -->
-      <!-- @blur和@keyup.enter都想触发同一事件 -->
-    </label>
-    <button class="btn btn-danger" @click="HandleDelete(todo.id)">删除</button>
-    <button
-      v-show="!todo.isEdit"
-      class="btn btn-normal"
-      @click="HandleEdit(todo)"
-    >
-      编辑
-    </button>
-  </li>
+  <transition
+    appear
+    name="animate__animated animate__bounce"
+    enter-active-class="animate__bounceIn"
+    leave-active-class="animate__bounceOut"
+  >
+    <li>
+      <label>
+        <input
+          type="checkbox"
+          :checked="todo.done"
+          @change="HandleChecked(todo.id)"
+        />
+        <span v-show="!todo.isEdit">{{ todo.title }}</span>
+        <input
+          type="text"
+          v-show="todo.isEdit"
+          :value="todo.title"
+          @blur="handleBlur(todo, $event)"
+          @keyup.enter="handleBlur(todo, $event)"
+          ref="inputTitle"
+        />
+        <!-- 当一个元素失去焦点的时候 blur 事件被触发。 -->
+        <!-- @blur和@keyup.enter都想触发同一事件 -->
+      </label>
+      <button class="btn btn-danger" @click="HandleDelete(todo.id)">
+        删除
+      </button>
+      <button
+        v-show="!todo.isEdit"
+        class="btn btn-normal"
+        @click="HandleEdit(todo)"
+      >
+        编辑
+      </button>
+    </li>
+  </transition>
 </template>
 
 <script>
+import "animate.css";
+
 export default {
   name: "TodoItem",
 
@@ -112,5 +123,22 @@ li:hover {
 
 li:hover button {
   display: block;
+}
+
+.todo-enter-active {
+  animation: TODOITEM 0.4s linear;
+}
+
+.todo-leave-active {
+  animation: TODOITEM 0.4s linear reverse;
+}
+
+@keyframes TODOITEM {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 </style>
