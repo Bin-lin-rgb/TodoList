@@ -1,18 +1,20 @@
 <template>
   <div class="container">
-    <CountNum/>
+    <UserSearch />
+    <UserList />
   </div>
 </template>
 
 <script>
   import "bootstrap/dist/css/bootstrap.min.css";
-
-  import CountNum from "./components/CountNum";
+  import UserSearch from "./components/UserSearch";
+  import UserList from "./components/UserList";
 
   export default {
     name:'App',
     components: {
-      CountNum
+      UserSearch,
+      UserList,
     },
   };
 </script>
