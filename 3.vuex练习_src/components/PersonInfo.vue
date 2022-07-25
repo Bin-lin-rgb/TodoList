@@ -52,10 +52,8 @@ export default {
       this.$store.dispatch("PersonInfo/add_casual");
     },
   },
-  mounted() {
-  },
+  mounted() {},
 };
 </script>
 
-<style>
-</style>
+<style></style>
